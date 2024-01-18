@@ -62,3 +62,13 @@ export const goolge = async (req, res, next) => {
         next(error)
     }
 }
+
+// Function to signout users by clearing the cookie
+export const signOut = async (req, res, next) => {
+    try {
+        res.clearCookie("access_token")
+        res.status(200).json("User has been loged out!")
+    } catch (error) {
+        next(error)
+    }
+}
