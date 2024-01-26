@@ -8,7 +8,6 @@ const CreateListing = () => {
         imageUrls: []
     })
     const [imageUploadError, setImageUploadError] = useState(false)
-    console.log(formData)
 
     const handleImageSubmit = (e) => {
         if(files.length > 0 && files.length + formData.imageUrls.length < 7) {
@@ -35,7 +34,7 @@ const CreateListing = () => {
 
     const storeImage = async (file) => {
         return new Promise((resolve, reject) => {
-            const storage = getStorage()
+            const storage = getStorage(app)
             const fileName = new Date().getTime() + file.name
             const storageRef = ref(storage, fileName)
             const uploadTask = uploadBytesResumable(storageRef, file)
