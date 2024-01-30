@@ -47,3 +47,18 @@ export const updateListing = async (req, res, next) => {
         next(error)
     }
 }
+
+// Function to get a specific listing based on an ID for updating and showing purposes
+export const getListing = async (req, res, next) => {
+    try {
+        const listing = await Listing.findById(req.params.id)
+
+        if(!listing) {
+            return next(errorHandler(404, "Listing Not Found"))
+        }
+
+        res.status(200).json(listing)
+    } catch (error) {
+        next(error)
+    }
+}
