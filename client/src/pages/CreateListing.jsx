@@ -59,7 +59,6 @@ const CreateListing = () => {
                 "state_changed",
                 (snapshot) => {
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-                    console.log(`Upload is ${progress} % done`)
                 },
                 (error) => {
                     reject(error)
@@ -122,7 +121,6 @@ const CreateListing = () => {
             })
 
             const data = await res.json()
-            console.log(data)
             setLoading(false)
             if(data.success === false) {
                 setError(data.message)

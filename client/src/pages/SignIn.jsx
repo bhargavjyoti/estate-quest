@@ -31,7 +31,6 @@ const signin = () => {
         body: JSON.stringify(formData)
       })
       const data = await res.json()
-      console.log(data)
 
       // Checking if there is an error
       if(data.success === false) {
